@@ -17,6 +17,10 @@ inputs:
     required: false
     description: 'Name of AWS region to be used.'
     default: 'us-west-2'
+  reset-env-vars:
+    required: false
+    description: 'Reset AWS environment variables.'
+    default: 'true'
 
 runs:
   using: "composite"
@@ -37,6 +41,7 @@ runs:
       aws configure set aws_session_token ${{ env.AWS_SESSION_TOKEN }} --profile ${{ inputs.profile-name }}
 
   - name: Reset AWS Environment Variables
+    if: ${{ inputs.reset-env-vars == 'true' }}
     shell: bash
     run: |
       echo "AWS_ACCESS_KEY_ID=" >> $GITHUB_ENV
