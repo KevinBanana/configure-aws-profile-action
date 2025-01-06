@@ -16,16 +16,17 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v3
 
-    - uses: mcblair/configure-aws-profile-action@v1.0.0
+    - uses: KevinBanana/configure-aws-profile-action@v1.0
       with:
         role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<ROLE_NAME>
         profile-name: test
 
-    - uses: mcblair/configure-aws-profile-action@v1.0.0
+    - uses: KevinBanana/configure-aws-profile-action@v1.0
       with:
         role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<ROLE_NAME>
         profile-name: production
         region: us-east-2
+        reset-env-vars: false
 
     - run: aws s3 ls --profile test
 
