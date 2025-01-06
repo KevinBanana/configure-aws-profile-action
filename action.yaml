@@ -1,4 +1,4 @@
-name: Configure AWS Profile
+name: Configure AWS Profile with optional reset
 
 description: Configures an OIDC AWS Role Session as an aws config profile.
 
